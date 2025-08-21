@@ -1,0 +1,381 @@
+{
+  "54": {
+    "inputs": {
+      "image": "443319485_darkgrey_MODEL4.jpg"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "UPLOAD OUTFIT"
+    }
+  },
+  "74": {
+    "inputs": {
+      "width": 1024,
+      "height": 1024,
+      "interpolation": "lanczos",
+      "method": "keep proportion",
+      "condition": "always",
+      "multiple_of": 0,
+      "image": [
+        "449",
+        0
+      ]
+    },
+    "class_type": "ImageResize+",
+    "_meta": {
+      "title": "🔧 Image Resize"
+    }
+  },
+  "261": {
+    "inputs": {
+      "image": [
+        "54",
+        0
+      ]
+    },
+    "class_type": "easy imageSize",
+    "_meta": {
+      "title": "ImageSize"
+    }
+  },
+  "353": {
+    "inputs": {
+      "x": 0,
+      "y": 0,
+      "operation": "subtract",
+      "destination": [
+        "459",
+        0
+      ],
+      "source": [
+        "432",
+        1
+      ]
+    },
+    "class_type": "MaskComposite",
+    "_meta": {
+      "title": "MaskComposite"
+    }
+  },
+  "372": {
+    "inputs": {
+      "width": [
+        "261",
+        0
+      ],
+      "height": [
+        "261",
+        1
+      ],
+      "batch_size": 1,
+      "color": 0
+    },
+    "class_type": "EmptyImage",
+    "_meta": {
+      "title": "EmptyImage"
+    }
+  },
+  "373": {
+    "inputs": {
+      "x": 0,
+      "y": 0,
+      "resize_source": true,
+      "destination": [
+        "372",
+        0
+      ],
+      "source": [
+        "54",
+        0
+      ],
+      "mask": [
+        "448",
+        0
+      ]
+    },
+    "class_type": "ImageCompositeMasked",
+    "_meta": {
+      "title": "ImageCompositeMasked"
+    }
+  },
+  "374": {
+    "inputs": {
+      "image": [
+        "373",
+        0
+      ],
+      "mask": [
+        "448",
+        0
+      ]
+    },
+    "class_type": "ImageCropByMask",
+    "_meta": {
+      "title": "Image Crop By Mask"
+    }
+  },
+  "432": {
+    "inputs": {
+      "Hair": true,
+      "Glasses": true,
+      "Top-clothes": false,
+      "Bottom-clothes": false,
+      "Torso-skin": true,
+      "Face": true,
+      "Left-arm": true,
+      "Right-arm": true,
+      "Left-leg": true,
+      "Right-leg": true,
+      "Left-foot": true,
+      "Right-foot": true,
+      "mask_blur": 0,
+      "mask_offset": -1,
+      "invert_output": false,
+      "background": "Alpha",
+      "background_color": "#222222",
+      "images": [
+        "54",
+        0
+      ]
+    },
+    "class_type": "BodySegment",
+    "_meta": {
+      "title": "Body Part Segmentation (RMBG)"
+    }
+  },
+  "444": {
+    "inputs": {
+      "coat": true,
+      "jacket": true,
+      "cardigan": true,
+      "vest": true,
+      "sweater": true,
+      "hood": true,
+      "shirt, blouse": true,
+      "top, t-shirt, sweatshirt": true,
+      "sleeve": true,
+      "dress": true,
+      "jumpsuit": true,
+      "cape": true,
+      "pants": true,
+      "shorts": true,
+      "skirt": true,
+      "tights, stockings": true,
+      "sock": false,
+      "shoe": false,
+      "process_res": 1024,
+      "mask_blur": 0,
+      "mask_offset": -2,
+      "invert_output": false,
+      "background": "Alpha",
+      "background_color": "#222222",
+      "images": [
+        "54",
+        0
+      ],
+      "accessories_options": [
+        "446",
+        0
+      ]
+    },
+    "class_type": "FashionSegmentClothing",
+    "_meta": {
+      "title": "Fashion Segmentation (RMBG)"
+    }
+  },
+  "446": {
+    "inputs": {
+      "hat": false,
+      "glasses": false,
+      "headband, head covering, hair accessory": false,
+      "scarf": true,
+      "tie": true,
+      "glove": false,
+      "watch": false,
+      "belt": true,
+      "leg warmer": false,
+      "bag, wallet": false,
+      "umbrella": false,
+      "collar": true,
+      "lapel": true,
+      "neckline": true,
+      "epaulette": true,
+      "pocket": true,
+      "buckle": true,
+      "zipper": true,
+      "applique": true,
+      "bow": true,
+      "flower": true,
+      "bead": true,
+      "fringe": true,
+      "ribbon": true,
+      "rivet": true,
+      "ruffle": true,
+      "sequin": true,
+      "tassel": true
+    },
+    "class_type": "FashionSegmentAccessories",
+    "_meta": {
+      "title": "Fashion Accessories Segmentation (RMBG)"
+    }
+  },
+  "448": {
+    "inputs": {
+      "x": 0,
+      "y": 0,
+      "operation": "add",
+      "destination": [
+        "353",
+        0
+      ],
+      "source": [
+        "444",
+        1
+      ]
+    },
+    "class_type": "MaskComposite",
+    "_meta": {
+      "title": "MaskComposite"
+    }
+  },
+  "449": {
+    "inputs": {
+      "mode": "incremental_image",
+      "index": 536004313598671,
+      "label": "fixed",
+      "path": 0,
+      "pattern": "Batch 001",
+      "allow_RGBA_output": "/home/ComfyUI/input/test_images",
+      "filename_text_extension": "*"
+    },
+    "class_type": "Load Image Batch",
+    "_meta": {
+      "title": "Load Image Batch"
+    }
+  },
+  "450": {
+    "inputs": {
+      "model_name": "sam2_1_hiera_large.pt"
+    },
+    "class_type": "SAM2ModelLoader (segment anything2)",
+    "_meta": {
+      "title": "SAM2ModelLoader (segment anything2)"
+    }
+  },
+  "451": {
+    "inputs": {
+      "model_name": "GroundingDINO_SwinB (938MB)"
+    },
+    "class_type": "GroundingDinoModelLoader (segment anything2)",
+    "_meta": {
+      "title": "GroundingDinoModelLoader (segment anything2)"
+    }
+  },
+  "452": {
+    "inputs": {
+      "prompt": "dress",
+      "threshold": 0.3500000000000001,
+      "sam_model": [
+        "450",
+        0
+      ],
+      "grounding_dino_model": [
+        "451",
+        0
+      ],
+      "image": [
+        "54",
+        0
+      ]
+    },
+    "class_type": "GroundingDinoSAM2Segment (segment anything2)",
+    "_meta": {
+      "title": "GroundingDinoSAM2Segment (segment anything2)"
+    }
+  },
+  "455": {
+    "inputs": {
+      "mask": [
+        "462",
+        1
+      ]
+    },
+    "class_type": "MaskPreview+",
+    "_meta": {
+      "title": "🔧 Mask Preview"
+    }
+  },
+  "456": {
+    "inputs": {
+      "prompt": "hand",
+      "threshold": 0.5100000000000001,
+      "sam_model": [
+        "450",
+        0
+      ],
+      "grounding_dino_model": [
+        "451",
+        0
+      ],
+      "image": [
+        "54",
+        0
+      ]
+    },
+    "class_type": "GroundingDinoSAM2Segment (segment anything2)",
+    "_meta": {
+      "title": "GroundingDinoSAM2Segment (segment anything2)"
+    }
+  },
+  "459": {
+    "inputs": {
+      "x": 0,
+      "y": 0,
+      "operation": "subtract",
+      "destination": [
+        "452",
+        1
+      ],
+      "source": [
+        "456",
+        1
+      ]
+    },
+    "class_type": "MaskComposite",
+    "_meta": {
+      "title": "MaskComposite"
+    }
+  },
+  "460": {
+    "inputs": {
+      "images": [
+        "374",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "462": {
+    "inputs": {
+      "expand": -2,
+      "incremental_expandrate": 0,
+      "tapered_corners": true,
+      "flip_input": false,
+      "blur_radius": 2,
+      "lerp_alpha": 1,
+      "decay_factor": 1,
+      "fill_holes": false,
+      "mask": [
+        "448",
+        0
+      ]
+    },
+    "class_type": "GrowMaskWithBlur",
+    "_meta": {
+      "title": "Grow Mask With Blur"
+    }
+  }
+}
